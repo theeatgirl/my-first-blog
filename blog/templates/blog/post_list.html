@@ -1,24 +1,32 @@
-<html>
-    <head>
-        <title>DRAKE LYRICS DATABASE</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="">DRAKE LYRICS DATABASE</a></h1>
-        </div>
+{% extends "blog/base.html" %}
+
+{% block content %}
+
+<body>
+          <div>
+          </div>
 
         <div>
-          {% for post in posts %}
-      <div>
-          <p>published: {{ post.published_date }}</p>
-          <h1><a href="">{{ post.title }}</a></h1>
-          <p>{{ post.text|linebreaks }}</p>
+          <div class="content container">
+          <div class="row">
+              <div class="col-md-8">
+                  {% for post in posts %}
+                  <h1><a href="{% url "post_detail" pk=post.pk %}">{{ post.title }}</a></h1>
+                      <div class="post">
+                          <div class="date">
+                              <p>published: {{ post.published_date }}</p>
+                          </div>
+                          <h1><a href="">{{ post.title }}</a></h1>
+                          <p>{{ post.text|linebreaks }}</p>
+                      </div>
+                  {% endfor %}
+              </div>
+          </div>
       </div>
-  {% endfor %}
         <div>
             <p>published: 26.09.2015, 12:14</p>
             <h2><a href="">My second post</a></h2>
             <p>Hi Drake i love you</p>
         </div>
     </body>
-</html>
+    {% endblock content %}
